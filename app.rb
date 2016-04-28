@@ -1,7 +1,7 @@
 %w[sinatra sinatra/reloader redis json net/http].each(&method(:require))
 
-set :gcm_uri, 'https://android.googleapis.com/gcm/send'
-set :api_key, 'AIzaSyBkesBWycrfZIBjivDrXqk3WNvvw1sV52U'
+gcmuri = 'https://android.googleapis.com/gcm/send'
+apikey = 'AIzaSyBkesBWycrfZIBjivDrXqk3WNvvw1sV52U'
 
 # Redis To Go
 if ENV["REDISTOGO_URL"].nil?
@@ -65,8 +65,8 @@ put '/api/v0/push/message' do
 end
 
 def gcm_push(ids)
-    uri = URI.parse(:gcm_uri)
-    req = Net::HTTP::Post.new(uri.path, initheader = {'Authorization' => "key=#{:api_key}"})
+    uri = URI.parse(gcmuri)
+    req = Net::HTTP::Post.new(uri.path, initheader = {'Authorization' => "key=#{apikey}"})
     req.body = {registration_ids:ids, collapse_key:1, 'data.message' => 'posted from gcm'}.to_json
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
