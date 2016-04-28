@@ -70,7 +70,7 @@ def gcm_push(ids)
         'Authorization' => "key=#{api_key}",
         'Content-Type' => 'application/json',
     })
-    req.body = {registration_ids:ids, collapse_key:1, 'data.message' => 'posted from gcm'}.to_json
+    req.body = {registration_ids:ids, collapse_key:'1', 'data.message' => 'posted from gcm'}.to_json
 
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
