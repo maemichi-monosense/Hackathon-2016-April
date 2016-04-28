@@ -39,14 +39,14 @@ get '/redis' do
     Current access at: #{Time.now.to_s}"
 end
 
-get '/api/v0/id/list' do
-    redis.lrange('id-list', 0, -1).to_a.to_json
+get '/api/v0/id/set' do
+    redis.smembers('id-set').to_json
 end
 
 put '/api/v0/id/registration' do
     request_payload = JSON.parse(request.body.read)
     id = request_payload['id']
-    redis.rpush('id-list', id)
+    redis.sadd('id-set', id)
     status 200
 end
 
