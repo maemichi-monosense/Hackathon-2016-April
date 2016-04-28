@@ -58,7 +58,7 @@ function showCurlCommand(mergedEndpoint) {
     }
   });
 
-  alert(JSON.stringify(JSON.stringify(JSONdata)));
+  alert(JSON.stringify(JSONdata));
 }
 
 function unsubscribe() {

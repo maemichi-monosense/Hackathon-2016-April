@@ -3,18 +3,22 @@
 self.addEventListener('push', function(event) {
   console.log('Received a push message', event);
 
-  var title = '健太さんへ';
-  var body = '好きです';
   var icon = '/images/maimai.jpg';
   var tag = 'simple-push-demo-notification-tag';
 
-  event.waitUntil(
-    self.registration.showNotification(title, {
-      body: body,
-      icon: icon,
-      tag: tag
-    })
-  );
+  var url = 'https://monosense-hackathon-web-push.herokuapp.com/api/v0/push/message';
+
+  fetch(url).then(function (response) {
+    return response.json();
+  }).then(function (json) {
+    event.waitUntil(
+      self.registration.showNotification(json.title, {
+        body: json.text,
+        icon: icon,
+        tag: tag
+      })
+    );
+  });
 });
 
 self.addEventListener('notificationclick', function(event) {
