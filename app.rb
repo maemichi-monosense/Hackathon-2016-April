@@ -66,7 +66,10 @@ def gcm_push(ids)
     api_key = 'AIzaSyBkesBWycrfZIBjivDrXqk3WNvvw1sV52U'
 
     uri = URI.parse(gcm_uri)
-    req = Net::HTTP::Post.new(uri.path, initheader = {'Authorization' => "key=#{api_key}"})
+    req = Net::HTTP::Post.new(uri.path, initheader = {
+        'Authorization' => "key=#{api_key}",
+        'Content-Type' => 'application/json',
+    })
     req.body = {registration_ids:ids, collapse_key:1, 'data.message' => 'posted from gcm'}.to_json
 
     https = Net::HTTP.new(uri.host, uri.port)
