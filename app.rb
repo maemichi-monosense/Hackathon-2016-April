@@ -1,4 +1,4 @@
-%w[sinatra sinatra/reloader redis].each(&method(:require))
+%w[sinatra sinatra/reloader redis json].each(&method(:require))
 
 # Redis To Go
 if ENV["REDISTOGO_URL"].nil?
@@ -35,4 +35,14 @@ get '/redis' do
     Last access at: #{last_access_at.to_s}
     <br>
     Current access at: #{Time.now.to_s}"
+end
+
+get '/api/v0/id/list' do
+    redis.lrange('id-list', 0, -1).to_a.to_json
+end
+
+put '/api/v0/id/registration' do
+    request_payload = JSON.parse(request.body.read)
+    id = request_payload['id']
+    redis.rpush('id-list', id)
 end
