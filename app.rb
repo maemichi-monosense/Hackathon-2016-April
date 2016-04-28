@@ -42,6 +42,7 @@ get '/api/v0/id/set' do
 end
 
 put '/api/v0/id/registration' do
+    request.body.rewind
     request_payload = JSON.parse(request.body.read)
     id = request_payload['id']
     redis.sadd('id-set', id)
@@ -53,6 +54,7 @@ get '/api/v0/push/message' do
 end
 
 put '/api/v0/push/message' do
+    request.body.rewind
     request_payload = JSON.parse(request.body.read)
     title = request_payload['title']
     text = request_payload['text']
