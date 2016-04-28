@@ -1,3 +1,6 @@
 source 'https://rubygems.org'
 
-gem "sinatra", "~> 1.4.3"
+# ruby '2.2.4'
+
+gem "sinatra", "1.4.7"
+gem "sinatra-reloader", "1.0"
