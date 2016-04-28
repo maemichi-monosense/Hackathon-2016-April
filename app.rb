@@ -3,8 +3,8 @@ require_relative 'sinatra_ssl'
 
 set :environment, :production
 set :port, 443
-set :ssl_certificate, '/home/ec2-user/server.crt'
-set :ssl_key, '/home/ec2-user/server.key'
+set :ssl_certificate, './server.crt'
+set :ssl_key, './server.key'
 
 get '/' do
     # @title = 'Hackathon'
