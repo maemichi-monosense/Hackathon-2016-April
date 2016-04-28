@@ -1,5 +1,6 @@
-%w[sinatra sinatra/reloader redis json].each(&method(:require))
+%w[sinatra sinatra/reloader redis json net/http].each(&method(:require))
 
+set :gcm_uri, 'https://android.googleapis.com/gcm/send'
 set :api_key, 'AIzaSyBkesBWycrfZIBjivDrXqk3WNvvw1sV52U'
 
 # Redis To Go
@@ -54,12 +55,27 @@ get '/api/v0/push/message' do
     {title:redis.get('push.title'), text:redis.get('push.text')}.to_json
 end
 
-post '/api/v0/push/message' do
+put '/api/v0/push/message' do
     request_payload = JSON.parse(request.body.read)
     title = request_payload['title']
     text = request_payload['text']
     redis.set('push.title', title)
     redis.set('push.text', text)
-    # TODO Web Push API
-    status 201
+    status 200
+end
+
+def gcm_push(ids)
+    uri = URI.parse(:gcm_uri)
+    req = Net::HTTP::Post.new(uri.path, initheader = {'Authorization' => "key=#{:api_key}"})
+    req.body = {registration_ids:ids, collapse_key:1, 'data.message' => 'posted from gcm'}.to_json
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
+    https.set_debug_output $stderr
+    res = https.request(req)
+    res.body
+end
+
+post '/api/v0/push/message' do
+    ids = redis.smembers 'id-set'
+    gcm_push ids
 end
