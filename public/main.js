@@ -52,13 +52,15 @@ function showCurlCommand(mergedEndpoint) {
     dataType: 'JSON',
     scriptCharset: 'utf-8',
     success: function (data) {
+      console.log(data);
     },
     error: function (data) {
+      console.log(data);
       alert("subscriptionIdの送信エラー");
     }
   });
 
-  alert(JSON.stringify(JSON.stringify(JSONdata)));
+  alert(JSON.stringify(JSONdata));
 }
 
 function unsubscribe() {
