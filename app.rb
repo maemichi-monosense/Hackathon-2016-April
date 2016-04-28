@@ -45,4 +45,5 @@ put '/api/v0/id/registration' do
     request_payload = JSON.parse(request.body.read)
     id = request_payload['id']
     redis.rpush('id-list', id)
+    status 200
 end
