@@ -1,5 +1,7 @@
 %w[sinatra sinatra/reloader redis json].each(&method(:require))
 
+set :api_key, 'AIzaSyBkesBWycrfZIBjivDrXqk3WNvvw1sV52U'
+
 # Redis To Go
 if ENV["REDISTOGO_URL"].nil?
     redis = Redis.new
@@ -46,4 +48,18 @@ put '/api/v0/id/registration' do
     id = request_payload['id']
     redis.rpush('id-list', id)
     status 200
+end
+
+get '/api/v0/push/message' do
+    {title:redis.get('push.title'), text:redis.get('push.text')}.to_json
+end
+
+post '/api/v0/push/message' do
+    request_payload = JSON.parse(request.body.read)
+    title = request_payload['title']
+    text = request_payload['text']
+    redis.set('push.title', title)
+    redis.set('push.text', text)
+    # TODO Web Push API
+    status 201
 end
