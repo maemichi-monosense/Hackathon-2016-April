@@ -29,7 +29,7 @@ put '/api/v0/id/registration' do
 end
 
 get '/api/v0/push/message' do
-    JSON.pretty_generate {title:redis.get('push.title'), text:redis.get('push.text')}
+    JSON.pretty_generate({title:redis.get('push.title'), text:redis.get('push.text')})
 end
 
 put '/api/v0/push/message' do
