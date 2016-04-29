@@ -48,13 +48,11 @@ function showCurlCommand(mergedEndpoint) {
     dataType: 'text',
     scriptCharset: 'utf-8',
     success: function (data) {
-      alert("ok");
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-      alert("error");
-      console.log(XMLHttpRequest);
-      console.log(textStatus);
-      console.log(errorThrown);
+      console.error(XMLHttpRequest);
+      console.error(textStatus);
+      console.error(errorThrown);
     }
   });
   // alert(JSON.stringify(JSONdata));
