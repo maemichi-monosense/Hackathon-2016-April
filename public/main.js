@@ -44,9 +44,12 @@ function showCurlCommand(mergedEndpoint) {
   $.ajax({
     url: url,
     type:'PUT',
+    headers: {
+      'X-HTTP-Method-Override': 'PUT',
+      'Content-Type': 'application/json'
+    },
     dataType: 'json',
     data : {id: subscriptionId},
-    timeout:10000,
     success: function (data) {
       alert("ok");
     },

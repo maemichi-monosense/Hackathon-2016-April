@@ -6,9 +6,12 @@ $(function(){
     $.ajax({
       url: url,
       type:'PUT',
+      headers: {
+        'X-HTTP-Method-Override': 'PUT',
+        'Content-Type': 'application/json'
+      },
       dataType: 'json',
       data : {title: $("#title").val(), text: $("#text").val()},
-      timeout:10000,
       success: function (data) {
         alert("ok");
         // プッシュ通知送信
@@ -17,7 +20,6 @@ $(function(){
           type:'POST',
           dataType: 'json',
           data : {},
-          timeout:10000,
           success: function(data) {
             alert("ok");
           },
