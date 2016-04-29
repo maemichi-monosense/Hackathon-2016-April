@@ -25,11 +25,17 @@ $(function(){
           },
           error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert("error");
+            console.log(XMLHttpRequest);
+            console.log(textStatus);
+            console.log(errorThrown);
           }
         });
       },
       error: function (XMLHttpRequest, textStatus, errorThrown) {
         alert("error");
+        console.log(XMLHttpRequest);
+        console.log(textStatus);
+        console.log(errorThrown);
       }
     });
   });

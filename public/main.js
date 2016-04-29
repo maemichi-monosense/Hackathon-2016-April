@@ -55,6 +55,9 @@ function showCurlCommand(mergedEndpoint) {
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
       alert("error");
+      console.log(XMLHttpRequest);
+      console.log(textStatus);
+      console.log(errorThrown);
     }
   });
   alert(JSON.stringify(JSONdata));
