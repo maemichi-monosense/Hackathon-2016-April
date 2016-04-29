@@ -45,7 +45,7 @@ function showCurlCommand(mergedEndpoint) {
     type: 'PUT',
     url: url,
     data: JSON.stringify(JSONdata),
-    dataType: 'JSON',
+    dataType: 'text',
     scriptCharset: 'utf-8',
     success: function (data) {
       alert("ok");
