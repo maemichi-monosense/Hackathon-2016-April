@@ -49,7 +49,7 @@ function showCurlCommand(mergedEndpoint) {
       'Content-Type': 'application/json'
     },
     dataType: 'json',
-    data : {id: subscriptionId},
+    data : JSON.stringify(JSONdata),
     success: function (data) {
       alert("ok");
     },
