@@ -8,7 +8,7 @@ $(function(){
       type: 'PUT',
       url: url,
       data: JSON.stringify(JSONdata),
-      dataType: 'JSON',
+      dataType: 'text',
       scriptCharset: 'utf-8',
       success: function (data) {
         alert("ok");
@@ -16,24 +16,21 @@ $(function(){
         $.ajax({
           url: url,
           type:'POST',
-          dataType: 'json',
-          data : {},
+          dataType: 'text',
+          data : JSON.stringify({}),
           success: function(data) {
-            alert("ok");
           },
           error: function(XMLHttpRequest, textStatus, errorThrown) {
-            alert("error");
-            console.log(XMLHttpRequest);
-            console.log(textStatus);
-            console.log(errorThrown);
+            console.error(XMLHttpRequest);
+            console.error(textStatus);
+            console.error(errorThrown);
           }
         });
       },
       error: function (XMLHttpRequest, textStatus, errorThrown) {
-        alert("error");
-        console.log(XMLHttpRequest);
-        console.log(textStatus);
-        console.log(errorThrown);
+        console.error(XMLHttpRequest);
+        console.error(textStatus);
+        console.error(errorThrown);
       }
     });
   });
