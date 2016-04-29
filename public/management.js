@@ -7,10 +7,6 @@ $(function(){
     $.ajax({
       type: 'PUT',
       url: url,
-      headers: {
-        'X-HTTP-Method-Override': 'PUT',
-        'Content-Type': 'application/json'
-      },
       data: JSON.stringify(JSONdata),
       dataType: 'JSON',
       scriptCharset: 'utf-8',

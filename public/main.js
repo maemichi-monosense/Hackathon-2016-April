@@ -44,10 +44,6 @@ function showCurlCommand(mergedEndpoint) {
   $.ajax({
     type: 'PUT',
     url: url,
-    headers: {
-      'X-HTTP-Method-Override': 'PUT',
-      'Content-Type': 'application/json'
-    },
     data: JSON.stringify(JSONdata),
     dataType: 'JSON',
     scriptCharset: 'utf-8',
@@ -61,7 +57,7 @@ function showCurlCommand(mergedEndpoint) {
       console.log(errorThrown);
     }
   });
-  alert(JSON.stringify(JSONdata));
+  // alert(JSON.stringify(JSONdata));
 }
 
 function unsubscribe() {
