@@ -64,6 +64,7 @@ end
 post '/api/v0/push/message' do
     ids = redis.smembers 'id-set'
     gcm_push ids
+    status 201
 end
 
 get '/management' do
