@@ -11,7 +11,6 @@ $(function(){
       dataType: 'text',
       scriptCharset: 'utf-8',
       success: function (data) {
-        alert("ok");
         // プッシュ通知送信
         $.ajax({
           url: url,
