@@ -44,23 +44,18 @@ function showCurlCommand(mergedEndpoint) {
   $.ajax({
     type: 'PUT',
     url: url,
-    headers: {
-      'X-HTTP-Method-Override': 'PUT',
-      'Content-Type': 'application/json'
-    },
     data: JSON.stringify(JSONdata),
-    dataType: 'JSON',
+    dataType: 'text',
     scriptCharset: 'utf-8',
     success: function (data) {
-      console.log(data);
     },
-    error: function (data) {
-      console.log(data);
-      alert("subscriptionIdの送信エラー");
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+      console.error(XMLHttpRequest);
+      console.error(textStatus);
+      console.error(errorThrown);
     }
   });
-
-  alert(JSON.stringify(JSONdata));
+  // alert(JSON.stringify(JSONdata));
 }
 
 function unsubscribe() {

@@ -86,3 +86,7 @@ post '/api/v0/push/message' do
     ids = redis.smembers 'id-set'
     gcm_push ids
 end
+
+get '/management' do
+    html :management
+end
