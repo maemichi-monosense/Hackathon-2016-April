@@ -30,7 +30,7 @@ get '/redis' do
     redis.set('LAST_ACCESS_AT', Time.now)
     "@#{ENV["REDISTOGO_URL"].nil? ? 'Local' : 'Heroku'}
     <br>
-    #{ENV.to_a.to_s}
+    #{JSON.pretty_generate ENV}
     <br>
     Last access at: #{last_access_at.to_s}
     <br>
@@ -38,7 +38,7 @@ get '/redis' do
 end
 
 get '/api/v0/id/set' do
-    redis.smembers('id-set').to_json
+    JSON.pretty_generate redis.smembers('id-set')
 end
 
 put '/api/v0/id/registration' do
@@ -50,7 +50,7 @@ put '/api/v0/id/registration' do
 end
 
 get '/api/v0/push/message' do
-    {title:redis.get('push.title'), text:redis.get('push.text')}.to_json
+    JSON.pretty_generate {title:redis.get('push.title'), text:redis.get('push.text')}
 end
 
 put '/api/v0/push/message' do
