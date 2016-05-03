@@ -69,7 +69,7 @@ function unsubscribe() {
         if (!pushSubscription) {
           isPushEnabled = false;
           pushButton.disabled = false;
-          pushButton.textContent = 'プッシュ通知をONにする';
+          pushButton.textContent = 'プッシュ通知をONにするっ♪';
           return;
         }
 
@@ -78,7 +78,7 @@ function unsubscribe() {
         // We have a subcription, so call unsubscribe on it
         pushSubscription.unsubscribe().then(function () {
           pushButton.disabled = false;
-          pushButton.textContent = 'プッシュ通知をONにする';
+          pushButton.textContent = 'プッシュ通知をONにするっ♪';
           isPushEnabled = false;
         }).catch(function (e) {
           alert('登録停止エラー error: ' + e);
@@ -99,7 +99,7 @@ function subscribe() {
       .then(function (subscription) {
         // subscription が成功した場合
         isPushEnabled = true;
-        pushButton.textContent = 'プッシュ通知をOFFにする';
+        pushButton.textContent = 'プッシュ通知をOFFにするっ♪';
         pushButton.disabled = false;
         // IDをサーバに送る
         return sendSubscriptionToServer(subscription);
@@ -111,7 +111,7 @@ function subscribe() {
         } else {
           alert('プッシュを登録することができません' + e);
           pushButton.disabled = false;
-          pushButton.textContent = 'プッシュ通知をONにする';
+          pushButton.textContent = 'プッシュ通知をONにするっ♪';
         }
       });
   });
@@ -141,7 +141,7 @@ function initialiseState() {
         }
         // IDをサーバに送る
         sendSubscriptionToServer(subscription);
-        pushButton.textContent = 'プッシュ通知をOFFにする';
+        pushButton.textContent = 'プッシュ通知をOFFにするっ♪';
         isPushEnabled = true;
       })
       .catch(function (err) {

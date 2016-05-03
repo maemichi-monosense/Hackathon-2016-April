@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,17 +21,194 @@
     <link rel="icon" href="../images/favicon.ico">
     <!-- Include manifest file in the page -->
     <link rel="manifest" href="manifest.json">
+    
+    
+
+    
+    <style type="text/css">
+
+html, body {
+  position: relative;
+  padding: 0;
+  height: 100%;
+  text-align: center;
+  background-image:url(bg01.jpg);
+  margin:0 auto;
+}
+.button {
+  display: inline-block;
+  margin-top: 1.4%;
+  margin-left: -80%;
+  position:relative;
+  color: #fff;
+	width: 200px;
+	height: 200px;
+	-webkit-border-radius: 100px;/* width,heightの半分 */
+	-moz-border-radius: 100px;
+	border-radius: 100px;
+	background-color: #00aaca;/* 円の色 */
+	
+}
+.button:hover {
+  cursor: pointer;
+  background: #03b4d5;
+}
+
+.button-text {
+	position:absolute;
+	top:15%;
+	left:10%;
+  cursor: pointer;
+  color:#fff;
+}
+
+
+.modal-box {
+  height: 0;
+}
+.content {
+  display: table;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 500px;
+  margin: auto;
+  padding: 30px 20px;
+  vertical-align: middle;
+  z-index: -1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1), 0 5px 10px rgba(0, 0, 0, .15);
+  background: #fff;
+  	-webkit-border-radius:6px 6px 6px 6px;
+	-moz-border-radius:6px 6px 6px 6px;
+	border-radius:6px 6px 6px 6px;
+}
+.content > span {
+  display: table-cell;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 100;
+}
+.toggle-on {
+  display: none;
+}
+.toggle-on:checked + .toggle-off + .content {
+  z-index: 1;
+}
+.toggle-off {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background: rgba(0, 0, 0, .15);
+  z-index: -1;
+  -webkit-transition: .6s ease-out, 1s z-index ease-out;
+  -moz-transition: .6s ease-out, 1s z-index ease-out;
+  -o-transition: .6s ease-out, 1s z-index ease-out;
+  transition: .6s ease-out, 1s z-index ease-out;
+}
+.toggle-on:checked + .toggle-off {
+  opacity: 1;
+  -webkit-transition: .4s ease-in, .3s z-index ease-in;
+  -moz-transition: .4s ease-in, .3s z-index ease-in;
+  -o-transition: .4s ease-in, .3s z-index ease-in;
+  transition: .4s ease-in, .3s z-index ease-in;
+  z-index: 1;
+}
+.toggle-button {
+  display: inline-block;
+  margin: .8em 0 0;
+  padding: .5em 1.2em;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  border-radius: 4px;
+  background: #ccc;
+  -webkit-transition: .24s ease;
+  -moz-transition: .24s ease;
+  -o-transition: .24s ease;
+  transition: .24s ease;
+}
+.toggle-button:hover {
+  cursor: pointer;
+  background: #929090;
+  color: #fff;
+}
+
+/* rotate */
+.ani-rotate {
+  opacity: 0;
+  -webkit-transition: .4s ease, 1s z-index ease;
+  -moz-transition: .4s ease, 1s z-index ease;
+  -o-transition: .4s ease, 1s z-index ease;
+  transition: .4s ease, 1s z-index ease;
+  -webkit-transform: rotate(450deg);
+  -moz-transform: rotate(450deg);
+  -ms-transform: rotate(450deg);
+  transform: rotate(450deg);
+}
+.toggle-on:checked + .toggle-off + .ani-rotate {
+  opacity: 1;
+  -webkit-transition: .4s ease;
+  -moz-transition: .4s ease;
+  -o-transition: .4s ease;
+  transition: .4s ease;
+  -webkit-transform: rotate(0);
+  -moz-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+	</style>
+	
+	
   </head>
 
   <body>
-    <h1>Webサイトプッシュ通知</h1>
+
+<label class="button" for="modal"><span class="button-text"><img src="modalbtn-img.png" /></span></label>
+
+
+<div class="modal-box">
+  <input type="checkbox" class="toggle-on" id="modal">
+  <label class="toggle-off" for="modal"></label>
+  <div class="content ani-rotate">
+    
+
     <p>
-        <button class="js-push-button" disabled>
-          プッシュ通知をONにする
-        </button>
+    <img src="logo.png" /><br>
+    <span style=" color:#00aaca; line-height:1.5; letter-spacing:1.0;">ご使用のブラウザに、AKB48グループショップからの「プッシュ通知をONにする」にチェックをいれると、最新ニュース速報がアナタのPC画面に表示され、リアルタイムで受け取れるようになります！</span>
+    <br>
+    <br>
+    <img src="girl.png" /><br>
+        <button class="js-push-button" disabled style="font-size:120%; padding:2%;-webkit-border-radius:6px 6px 6px 6px;
+-moz-border-radius:6px 6px 6px 6px; border-radius:6px 6px 6px 6px; background-color:#00aaca; color:#fff; font-family:'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif">プッシュ通知をONにするっ♪</button>
     </p>
-    <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://code.jquery.com/jquery.js"></script>
     <script src="config.js"></script>
     <script src="main.js"></script>
+
+    <label class="toggle-button" for="modal">Close</label>
+    </span>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+    
+
   </body>
 </html>
+
+
